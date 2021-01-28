@@ -1,88 +1,88 @@
 plugins {
-	id 'java'
-	id 'maven-publish'
-	id 'signing'
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
 }
 
 group 'com.javaquery'
 version '1.0'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	testCompile ('org.junit.jupiter:junit-jupiter:5.7.0')
+    testCompile('org.junit.jupiter:junit-jupiter:5.7.0')
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 java {
-	withJavadocJar()
-	withSourcesJar()
+    withJavadocJar()
+    withSourcesJar()
 }
 
 publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifactId = 'util'
-			from components.java
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'util'
+            from components.java
 
-			versionMapping {
-				usage('java-api') {
-					fromResolutionOf('runtimeClasspath')
-				}
-				usage('java-runtime') {
-					fromResolutionResult()
-				}
-			}
-			pom {
-				name = 'Java Util Library'
-				description = 'Java util class to reduce boilerplate codes'
-				url = 'https://github.com/javaquery/util'
-				licenses {
-					license {
-						name = 'MIT'
-						url = 'https://github.com/javaquery/util/blob/main/LICENSE'
-					}
-				}
-				developers {
-					developer {
-						id = 'javaquery'
-						name = 'Vicky Thakor'
-						email = 'vicky.thakor@javaquery.com'
-						timezone = '+05:30'
-					}
-				}
-				scm {
-					connection = 'scm:git:git://github.com/javaquery/util.git'
-					developerConnection = 'scm:git:ssh://github.com/javaquery/util.git'
-					url = 'https://github.com/javaquery/util'
-				}
-			}
-		}
-	}
-	repositories {
-		maven {
-			def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-			def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
-			url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-			credentials {
-				username "javaquery"
-				password "*****"
-			}
-		}
-	}
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'Java Util Library'
+                description = 'Java util class to reduce boilerplate codes'
+                url = 'https://github.com/javaquery/util'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://github.com/javaquery/util/blob/main/LICENSE'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'javaquery'
+                        name = 'Vicky Thakor'
+                        email = 'vicky.thakor@javaquery.com'
+                        timezone = '+05:30'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/javaquery/util.git'
+                    developerConnection = 'scm:git:ssh://github.com/javaquery/util.git'
+                    url = 'https://github.com/javaquery/util'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username "javaquery"
+                password "a2a@\$ASDF#777"
+            }
+        }
+    }
 }
 
 signing {
-	sign publishing.publications.mavenJava
+    sign publishing.publications.mavenJava
 }
 
 javadoc {
-	if(JavaVersion.current().isJava9Compatible()) {
-		options.addBooleanOption('html5', true)
-	}
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }

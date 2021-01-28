@@ -12,7 +12,9 @@ import java.util.TimeZone;
  * @author vicky.thakor
  * @since 1.0
  */
-public class Dates {
+public final class Dates {
+
+    private Dates(){}
 
     public static final TimeZone SYSTEM_TIMEZONE = TimeZone.getDefault();
     private static final Calendar CALENDAR = Calendar.getInstance();

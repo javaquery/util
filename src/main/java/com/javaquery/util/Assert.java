@@ -14,8 +14,7 @@ import java.util.function.Supplier;
  */
 public final class Assert {
 
-    private Assert() {
-    }
+    private Assert() {}
 
     /**
      * <em>Assert</em> that {@code object} is {@code not null}.
@@ -27,7 +26,7 @@ public final class Assert {
      * @throws NullPointerException if {@code object} is {@code null} and {@code exceptionSupplier} is {@code null}
      */
     public static <T extends Throwable> void nonNull(Object object, Supplier<T> exceptionSupplier) throws T {
-        if (object == null) {
+        if (Objects.isNull(object)) {
             throw exceptionSupplier.get();
         }
     }
@@ -42,7 +41,7 @@ public final class Assert {
      * @throws NullPointerException if {@code object} is {@code not null} and {@code exceptionSupplier} is {@code null}
      */
     public static <T extends Throwable> void isNull(Object object, Supplier<T> exceptionSupplier) throws T {
-        if (object != null) {
+        if (Objects.nonNull(object)) {
             throw exceptionSupplier.get();
         }
     }

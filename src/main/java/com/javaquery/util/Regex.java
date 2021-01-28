@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
  * @author vicky.thakor
  * @since 1.0
  */
-public class Regex {
+public final class Regex {
+
+    private Regex(){}
 
     public static final String REGEX_NUMBER = "^-?[0-9]\\d*(\\.\\d+)?$";
     public static final String REGEX_ALPHA_NUMERIC = "^[a-zA-Z0-9]*$";

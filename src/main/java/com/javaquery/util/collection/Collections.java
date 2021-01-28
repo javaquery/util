@@ -12,7 +12,9 @@ import java.util.stream.Stream;
  * @author vicky.thakor
  * @since 1.0
  */
-public class Collections {
+public final class Collections {
+
+    private Collections(){}
 
     /**
      * Returns {@code true} if the provided Collection [List, Set] is {@code null} or empty otherwise

@@ -6,7 +6,8 @@ package com.javaquery.util;
  */
 public final class Objects {
 
-    private Objects(){}
+    private Objects() {
+    }
 
     /**
      * Returns {@code true} if the provided reference is {@code null} otherwise

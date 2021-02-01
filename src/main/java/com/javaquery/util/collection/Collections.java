@@ -14,7 +14,8 @@ import java.util.stream.Stream;
  */
 public final class Collections {
 
-    private Collections(){}
+    private Collections() {
+    }
 
     /**
      * Returns {@code true} if the provided Collection [List, Set] is {@code null} or empty otherwise

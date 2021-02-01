@@ -14,7 +14,8 @@ import java.util.function.Supplier;
  */
 public final class Assert {
 
-    private Assert() {}
+    private Assert() {
+    }
 
     /**
      * <em>Assert</em> that {@code object} is {@code not null}.

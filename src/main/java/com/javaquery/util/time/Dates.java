@@ -14,10 +14,10 @@ import java.util.TimeZone;
  */
 public final class Dates {
 
-    private Dates(){}
-
     public static final TimeZone SYSTEM_TIMEZONE = TimeZone.getDefault();
     private static final Calendar CALENDAR = Calendar.getInstance();
+    private Dates() {
+    }
 
     /**
      * @return current time in milliseconds by using System.currentTimeMillis()
@@ -223,13 +223,14 @@ public final class Dates {
                 11), DECEMBER(12);
 
         private int value;
+        private final static Calendar calendar = Calendar.getInstance();
 
         Month(int value) {
             this.value = value;
         }
 
         public static Month currentMonth() {
-            return Month.values()[CALENDAR.get(Calendar.MONTH)];
+            return Month.values()[calendar.get(Calendar.MONTH)];
         }
 
         public int getValue() {

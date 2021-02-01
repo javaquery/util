@@ -12,7 +12,8 @@ repositories {
 }
 
 dependencies {
-    testCompile('org.junit.jupiter:junit-jupiter:5.7.0')
+    implementation('org.slf4j:slf4j-api:1.7.30')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
 }
 
 test {
@@ -71,7 +72,7 @@ publishing {
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
                 username "javaquery"
-                password "a2a@\$ASDF#777"
+                password "******"
             }
         }
     }

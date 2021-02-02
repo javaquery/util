@@ -59,9 +59,9 @@ public final class Files {
      * successfully created; <code>false</code> if the named file
      * already exists
      */
-    public static <T extends File> boolean deleteAndCreateNewFile(T file){
+    public static <T extends File> boolean deleteAndCreateNewFile(T file) {
         Assert.nonNull(file, NullPointerException::new);
-        if(file.exists()){
+        if (file.exists()) {
             file.delete();
         }
         return createNewFile(file);
@@ -77,10 +77,10 @@ public final class Files {
      * @param data data to write to file
      * @param <T>
      */
-    public static <T extends File> void writeToFile(T file, String data){
+    public static <T extends File> void writeToFile(T file, String data) {
         Assert.nonNull(file, NullPointerException::new);
         Assert.nonNull(data, NullPointerException::new);
-        if(!file.exists()){
+        if (!file.exists()) {
             createNewFile(file);
         }
         try {
@@ -96,16 +96,16 @@ public final class Files {
      * Note: This method will also creates new <code>file</code> if not exist.
      * Exception is logged not thrown.
      *
-     * @param file file to write
-     * @param data data to append to file
+     * @param file          file to write
+     * @param data          data to append to file
      * @param appendNewLine <code>true</code> to append new line at the end of data
      *                      otherwise <code>false</code>.
      * @param <T>
      */
-    public static <T extends File> void appendToFile(T file, String data, boolean appendNewLine){
+    public static <T extends File> void appendToFile(T file, String data, boolean appendNewLine) {
         Assert.nonNull(file, NullPointerException::new);
         Assert.nonNull(data, NullPointerException::new);
-        if(!file.exists()){
+        if (!file.exists()) {
             createNewFile(file);
         }
         data = appendNewLine ? (data + "\n") : data;
@@ -125,40 +125,12 @@ public final class Files {
      * @param <T>
      * @return String data of file if exists otherwise <code>null</code>
      */
-    public static <T extends File> String readFromFile(T file){
+    public static <T extends File> String readFromFile(T file) {
         Assert.nonNull(file, NullPointerException::new);
-        if(file.exists()){
+        if (file.exists()) {
             try {
                 return new String(java.nio.file.Files.readAllBytes(getPath(file)));
             } catch (IOException | InvalidPathException e) {
-                LOGGER.error(e.getMessage(), e);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Read any file from resources folder of project.
-     * For example, read demo.json from provided path `resources folder` <code>/sample/demo.json</code>
-     *
-     * @param path path to resource
-     * @return String data of file if exists otherwise <code>null</code>
-     */
-    public String loadResource(String path){
-        Assert.nonNull(path, NullPointerException::new);
-        if(!path.trim().isEmpty()){
-            try(
-                InputStream inputStream = getClass().getResourceAsStream(path);
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))
-            ){
-                String fileLine;
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while((fileLine = bufferedReader.readLine())!= null){
-                    stringBuilder.append(fileLine);
-                }
-                return stringBuilder.toString();
-            } catch (IOException | NullPointerException e) {
                 LOGGER.error(e.getMessage(), e);
             }
         }
@@ -172,7 +144,35 @@ public final class Files {
      * @param <T>
      * @return {@link Path} of file
      */
-    private static <T extends File> Path getPath(T file){
+    private static <T extends File> Path getPath(T file) {
         return Paths.get(file.getAbsolutePath());
+    }
+
+    /**
+     * Read any file from resources folder of project.
+     * For example, read demo.json from provided path `resources folder` <code>/sample/demo.json</code>
+     *
+     * @param path path to resource
+     * @return String data of file if exists otherwise <code>null</code>
+     */
+    public String loadResource(String path) {
+        Assert.nonNull(path, NullPointerException::new);
+        if (!path.trim().isEmpty()) {
+            try (
+                    InputStream inputStream = getClass().getResourceAsStream(path);
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))
+            ) {
+                String fileLine;
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ((fileLine = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(fileLine);
+                }
+                return stringBuilder.toString();
+            } catch (IOException | NullPointerException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        }
+        return null;
     }
 }

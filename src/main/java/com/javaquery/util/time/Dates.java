@@ -16,6 +16,7 @@ public final class Dates {
 
     public static final TimeZone SYSTEM_TIMEZONE = TimeZone.getDefault();
     private static final Calendar CALENDAR = Calendar.getInstance();
+
     private Dates() {
     }
 
@@ -222,8 +223,8 @@ public final class Dates {
         JANUARY(1), FEBRUARY(2), MARCH(3), APRIL(4), MAY(5), JUNE(6), JULY(7), AUGUST(8), SEPTEMBER(9), OCTOBER(10), NOVEMBER(
                 11), DECEMBER(12);
 
-        private int value;
         private final static Calendar calendar = Calendar.getInstance();
+        private int value;
 
         Month(int value) {
             this.value = value;

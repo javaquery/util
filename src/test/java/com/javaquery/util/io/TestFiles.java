@@ -1,6 +1,5 @@
 package com.javaquery.util.io;
 
-import com.javaquery.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

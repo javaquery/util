@@ -35,7 +35,7 @@ public enum DatePattern {
     MMM_DD_YYYY("MMM dd, yyyy"),
     E_D_M_Y_HMS("EEE, dd MMM yyyy HH:mm:ss +0000");
 
-    private String value;
+    private final String value;
 
     DatePattern(String value) {
         this.value = value;

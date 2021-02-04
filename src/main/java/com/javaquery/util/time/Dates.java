@@ -224,7 +224,7 @@ public final class Dates {
                 11), DECEMBER(12);
 
         private final static Calendar calendar = Calendar.getInstance();
-        private int value;
+        private final int value;
 
         Month(int value) {
             this.value = value;

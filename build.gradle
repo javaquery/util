@@ -5,14 +5,14 @@ plugins {
 }
 
 group 'com.javaquery'
-version '1.0'
+version '1.0.1'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation('org.slf4j:slf4j-api:1.7.30')
+    implementation('org.slf4j:slf4j-api:+')
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
 }
 

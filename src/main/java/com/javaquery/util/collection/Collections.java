@@ -25,7 +25,7 @@ public final class Collections {
      * @return {@code true} if the provided Collection [List, Set] is {@code null} or empty
      * otherwise {@code false}
      */
-    public static boolean nullOrEmpty(Collection collection) {
+    public static boolean nullOrEmpty(Collection<?> collection) {
         return Objects.isNull(collection) || collection.isEmpty();
     }
 
@@ -37,7 +37,7 @@ public final class Collections {
      * @return {@code true} if the provided Collection [List, Set] is non-{@code null} and non-empty
      * otherwise {@code false}
      */
-    public static boolean nonNullNonEmpty(Collection collection) {
+    public static boolean nonNullNonEmpty(Collection<?> collection) {
         return Objects.nonNull(collection) && !collection.isEmpty();
     }
 
@@ -49,7 +49,7 @@ public final class Collections {
      * @return {@code true} if the provided Map is {@code null} and empty otherwise
      * * returns {@code false}
      */
-    public static boolean nullOrEmpty(Map map) {
+    public static boolean nullOrEmpty(Map<?, ?> map) {
         return Objects.isNull(map) || map.isEmpty();
     }
 
@@ -61,7 +61,7 @@ public final class Collections {
      * @return {@code true} if the provided Map is non-{@code null} and non-empty
      * otherwise {@code false}
      */
-    public static boolean nonNullNonEmpty(Map map) {
+    public static boolean nonNullNonEmpty(Map<?, ?> map) {
         return Objects.nonNull(map) && !map.isEmpty();
     }
 

@@ -29,7 +29,7 @@ public final class Files {
      * Note: Exception is logged not thrown.
      *
      * @param file - file to create
-     * @param <T>
+     * @param <T>  the type of class that extends {@link File}
      * @return <code>true</code> if the named file does not exist and was
      * successfully created; <code>false</code> if the named file
      * already exists
@@ -54,7 +54,7 @@ public final class Files {
      * Note: Exception is logged not thrown.
      *
      * @param file - file to delete and create
-     * @param <T>
+     * @param <T>  the type of class that extends {@link File}
      * @return <code>true</code> if the named file deleted and was
      * successfully created; <code>false</code> if the named file
      * already exists
@@ -75,7 +75,7 @@ public final class Files {
      *
      * @param file file to write
      * @param data data to write to file
-     * @param <T>
+     * @param <T>  the type of class that extends {@link File}
      */
     public static <T extends File> void writeToFile(T file, String data) {
         Assert.nonNull(file, NullPointerException::new);
@@ -100,7 +100,7 @@ public final class Files {
      * @param data          data to append to file
      * @param appendNewLine <code>true</code> to append new line at the end of data
      *                      otherwise <code>false</code>.
-     * @param <T>
+     * @param <T>           the type of class that extends {@link File}
      */
     public static <T extends File> void appendToFile(T file, String data, boolean appendNewLine) {
         Assert.nonNull(file, NullPointerException::new);
@@ -122,7 +122,7 @@ public final class Files {
      * Note: Exception is logged not thrown.
      *
      * @param file file to read
-     * @param <T>
+     * @param <T> the type of class that extends {@link File}
      * @return String data of file if exists otherwise <code>null</code>
      */
     public static <T extends File> String readFromFile(T file) {
@@ -141,7 +141,7 @@ public final class Files {
      * Path of file provided
      *
      * @param file file to get {@link Path}.
-     * @param <T>
+     * @param <T> the type of class that extends {@link File}
      * @return {@link Path} of file
      */
     private static <T extends File> Path getPath(T file) {

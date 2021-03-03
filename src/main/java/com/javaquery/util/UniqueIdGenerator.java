@@ -2,7 +2,6 @@ package com.javaquery.util;
 
 /**
  * @author vicky.thakor
- * @see https://gist.githubusercontent.com/swftvsn/438b4ed68619ad1f5d1c251dc3a5af6f/raw/d29e0fb3ecab2702bf1b856c2ae217d5a43442fa/FirebasePushIdGenerator.java
  * @since 1.0.3
  */
 public class UniqueIdGenerator {

@@ -72,6 +72,7 @@ public final class Collections {
      *
      * @param source    a List to be batched
      * @param batchSize size of batch you want
+     * @param <T> the type of List to be returned.
      * @return Returns stream of batched List from original List by given batch size.
      * <p>
      * reference: http://stackoverflow.com/questions/12026885/common-util-to-break-a-list-into-batch
@@ -111,7 +112,7 @@ public final class Collections {
      * @throws NullPointerException if either collection is null
      * @since 1.0.3
      */
-    public static <E> boolean isCollectionEqual(final Collection<E> collectionOne, final Collection<E> collectionTwo) {
+    public static boolean isCollectionEqual(final Collection<?> collectionOne, final Collection<?> collectionTwo) {
         Assert.nonNull(collectionOne, NullPointerException::new);
         Assert.nonNull(collectionTwo, NullPointerException::new);
 

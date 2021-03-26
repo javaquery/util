@@ -4,7 +4,7 @@ package com.javaquery.util.time;
  * @author vicky.thakor
  * @since 1.0
  */
-public enum DatePattern {
+public enum DatePattern implements DateTimeFormat{
 
     Y_M_D("yyyyMMdd"),
     Y_M_D_HMS("yyyyMMddHHmmss"),
@@ -41,6 +41,7 @@ public enum DatePattern {
         this.value = value;
     }
 
+    @Override
     public String getValue() {
         return value;
     }

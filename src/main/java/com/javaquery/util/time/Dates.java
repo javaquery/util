@@ -94,14 +94,14 @@ public final class Dates {
     }
 
     /**
-     * Returns {@code SimpleDateFormat} with given {@code DatePattern} and {@code Timezone}
+     * Returns {@code SimpleDateFormat} with given {@code DateTimeFormat} and {@code Timezone}
      *
-     * @param datePattern a {@code DatePattern} to set for {@code SimpleDateFormat}
+     * @param dateTimeFormat a {@code DateTimeFormat} to set for {@code SimpleDateFormat}
      * @param timeZone    a {@code Timezone} to set for {@code SimpleDateFormat}
-     * @return Returns {@code SimpleDateFormat} with given {@code DatePattern} and {@code Timezone}
+     * @return Returns {@code SimpleDateFormat} with given {@code DateTimeFormat} and {@code Timezone}
      */
-    private static SimpleDateFormat getSimpleDateFormat(DatePattern datePattern, TimeZone timeZone) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern.getValue());
+    private static SimpleDateFormat getSimpleDateFormat(DateTimeFormat dateTimeFormat, TimeZone timeZone) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateTimeFormat.getValue());
         simpleDateFormat.setTimeZone(timeZone);
         return simpleDateFormat;
     }
@@ -111,13 +111,13 @@ public final class Dates {
      * it returns {@code null}.
      *
      * @param date        a String date to parse
-     * @param datePattern pattern to parse the date
+     * @param dateTimeFormat pattern to parse the date
      * @param timeZone    timezone to parse the date
      * @return Returns Date object of given String date using provided timezone, in case of ParseException
      * it returns {@code null}.
      */
-    public static Date parse(String date, DatePattern datePattern, TimeZone timeZone) {
-        SimpleDateFormat simpleDateFormat = getSimpleDateFormat(datePattern, timeZone);
+    public static Date parse(String date, DateTimeFormat dateTimeFormat, TimeZone timeZone) {
+        SimpleDateFormat simpleDateFormat = getSimpleDateFormat(dateTimeFormat, timeZone);
         try {
             return simpleDateFormat.parse(date);
         } catch (ParseException e) {/* Silent exception */}
@@ -129,55 +129,55 @@ public final class Dates {
      * it returns {@code null}.
      *
      * @param date        a String date to parse
-     * @param datePattern pattern to parse the date
+     * @param dateTimeFormat pattern to parse the date
      * @return Returns Date object of given String date using system timezone, in case of ParseException
      * it returns {@code null}.
      */
-    public static Date parse(String date, DatePattern datePattern) {
-        return parse(date, datePattern, SYSTEM_TIMEZONE);
+    public static Date parse(String date, DateTimeFormat dateTimeFormat) {
+        return parse(date, dateTimeFormat, SYSTEM_TIMEZONE);
     }
 
     /**
-     * Returns {@code Date} object in String, formatted by given {@code DatePattern} and {@code TimeZone}
+     * Returns {@code Date} object in String, formatted by given {@code DateTimeFormat} and {@code TimeZone}
      *
      * @param date        a {@code Date} object to format
-     * @param datePattern pattern to format {@code Date}
+     * @param dateTimeFormat pattern to format {@code Date}
      * @param timeZone    {@code TimeZone} to use while formatting {@code Date}
-     * @return Returns {@code Date} object in String, formatted by given {@code DatePattern} and {@code TimeZone}
+     * @return Returns {@code Date} object in String, formatted by given {@code DateTimeFormat} and {@code TimeZone}
      */
-    public static String format(Date date, DatePattern datePattern, TimeZone timeZone) {
-        SimpleDateFormat simpleDateFormat = getSimpleDateFormat(datePattern, timeZone);
+    public static String format(Date date, DateTimeFormat dateTimeFormat, TimeZone timeZone) {
+        SimpleDateFormat simpleDateFormat = getSimpleDateFormat(dateTimeFormat, timeZone);
         return simpleDateFormat.format(date);
     }
 
     /**
-     * Returns {@code Date} object in String, formatted by given {@code DatePattern} and using
+     * Returns {@code Date} object in String, formatted by given {@code DateTimeFormat} and using
      * system {@code TimeZone}
      *
      * @param date        a {@code Date} object to format
-     * @param datePattern pattern to format {@code Date}
-     * @return Returns {@code Date} object in String, formatted by given {@code DatePattern} and using
+     * @param dateTimeFormat pattern to format {@code Date}
+     * @return Returns {@code Date} object in String, formatted by given {@code DateTimeFormat} and using
      * system {@code TimeZone}
      */
-    public static String format(Date date, DatePattern datePattern) {
-        return format(date, datePattern, SYSTEM_TIMEZONE);
+    public static String format(Date date, DateTimeFormat dateTimeFormat) {
+        return format(date, dateTimeFormat, SYSTEM_TIMEZONE);
     }
 
     /**
      * Returns String {@code Date} by performing two operation on {@code Date} object,
-     * {@link Dates#addInDate(Date, int, int)} and {@link Dates#format(Date, DatePattern)}
+     * {@link Dates#addInDate(Date, int, int)} and {@link Dates#format(Date, DateTimeFormat)}
      *
      * @param date        a {@code Date} object to format
      * @param type        the calendar field. For example, {@code Calendar.DAY_OF_MONTH}
      * @param amount      the amount of date or time to be added to the field.
-     * @param datePattern pattern to format {@code Date}
+     * @param dateTimeFormat pattern to format {@code Date}
      * @return Returns String {@code Date} by performing two operation on {@code Date} object,
-     * {@link Dates#addInDate(Date, int, int)} and {@link Dates#format(Date, DatePattern)}
+     * {@link Dates#addInDate(Date, int, int)} and {@link Dates#format(Date, DateTimeFormat)}
      * @see Dates#addInDate(Date, int, int)
-     * @see Dates#format(Date, DatePattern)
+     * @see Dates#format(Date, DateTimeFormat)
      */
-    public static String addInDateAndFormat(Date date, int type, int amount, DatePattern datePattern) {
-        return format(addInDate(date, type, amount), datePattern);
+    public static String addInDateAndFormat(Date date, int type, int amount, DateTimeFormat dateTimeFormat) {
+        return format(addInDate(date, type, amount), dateTimeFormat);
     }
 
     /**

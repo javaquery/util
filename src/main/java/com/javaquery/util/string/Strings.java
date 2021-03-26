@@ -12,8 +12,9 @@ import java.util.StringJoiner;
  */
 public final class Strings {
 
-    private final static String UNSUPPORTED_ASCII_PATTERN = "[^\\x20-\\x7e]";
-    private final static String UNSUPPORTED_UNICODE_PATTERN = "[\\uD83C-\\uDBFF\\uDC00-\\uDFFF]+";
+    public static final String EMPTY_STRING = "";
+    private static final String UNSUPPORTED_ASCII_PATTERN = "[^\\x20-\\x7e]";
+    private static final String UNSUPPORTED_UNICODE_PATTERN = "[\\uD83C-\\uDBFF\\uDC00-\\uDFFF]+";
 
     private Strings() {
     }

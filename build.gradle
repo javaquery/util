@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.javaquery'
-version '1.0.4'
+version '1.0.5'
 
 repositories {
     mavenCentral()
@@ -25,6 +25,17 @@ test {
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Built-By': "Vicky Thakor",
+                'Created-By': "Gradle ${gradle.gradleVersion}",
+                'Build-Jdk': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                'Import-Package': "org.json,org.slf4j,*"
+        )
+    }
 }
 
 publishing {

@@ -7,9 +7,9 @@ package com.javaquery.util.time;
  */
 public interface DateTimeFormat {
 
-    /**
-     * @see DatePattern
-     * @return date time pattern to parse or format
-     */
-    String getValue();
+  /**
+   * @see DatePattern
+   * @return date time pattern to parse or format
+   */
+  String getValue();
 }

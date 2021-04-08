@@ -5,5 +5,6 @@ package com.javaquery.util.json;
  * @since 1.0.4
  */
 public enum TestJSONEnum {
-    Regular, Chocolate
+  Regular,
+  Chocolate
 }

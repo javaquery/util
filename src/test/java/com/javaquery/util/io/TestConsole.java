@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
  */
 public class TestConsole {
 
-    @Test
-    public void test_log(){
-        Console.log("Hello World!");
-    }
+  @Test
+  public void test_log() {
+    Console.log("Hello World!");
+  }
 
-    @Test
-    public void test_error(){
-        Console.error("Hello World!");
-    }
+  @Test
+  public void test_error() {
+    Console.error("Hello World!");
+  }
 }

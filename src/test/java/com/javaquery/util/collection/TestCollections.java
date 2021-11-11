@@ -25,36 +25,90 @@ public class TestCollections {
   private static final Map<String, String> NULL_MAP = null;
 
   @Test
+  public void test_singleton(){
+    Set<String> singletonSet = Collections.singleton("dummy");
+    Assertions.assertEquals(1, singletonSet.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> singletonSet.add("dummy2"));
+  }
+
+  @Test
+  public void test_singletonList(){
+    List<String> singletonList = Collections.singletonList("dummy");
+    Assertions.assertEquals(1, singletonList.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> singletonList.add("dummy2"));
+  }
+
+  @Test
+  public void test_singletonMap(){
+    Map<String, Integer> singletonMap = Collections.singletonMap("counter", 100);
+    Assertions.assertEquals(1, singletonMap.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> singletonMap.put("dummyCounter", 200));
+  }
+
+  @Test
+  public void test_emptySet(){
+    Set<Integer> emptySet = Collections.emptySet();
+    Assertions.assertEquals(0, emptySet.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> emptySet.add(200));
+  }
+
+  @Test
+  public void test_emptyList(){
+    List<Integer> emptyList = Collections.emptyList();
+    Assertions.assertEquals(0, emptyList.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> emptyList.add(200));
+  }
+
+  @Test
+  public void test_emptyMap(){
+    Map<Integer, String> emptyMap = Collections.emptyMap();
+    Assertions.assertEquals(0, emptyMap.size());
+    Assertions.assertThrows(UnsupportedOperationException.class, ()-> emptyMap.put(200, "dummy"));
+  }
+
+  @Test
   public void test_nullOrEmpty() {
     Assertions.assertTrue(Collections.nullOrEmpty(NULL_LIST));
     Assertions.assertTrue(Collections.nullOrEmpty(EMPTY_LIST));
-    Assertions.assertFalse(Collections.nullOrEmpty(java.util.Collections.singletonList("A")));
+    Assertions.assertFalse(Collections.nullOrEmpty(Collections.singletonList("A")));
     Assertions.assertTrue(Collections.nullOrEmpty(NULL_MAP));
     Assertions.assertTrue(Collections.nullOrEmpty(EMPTY_MAP));
   }
 
   @Test
+  public void test_nullOrEmpty_ExecutableFunction() {
+    Collections.nullOrEmpty(NULL_LIST, () -> Assertions.assertTrue(true));
+    Collections.nullOrEmpty(NULL_MAP, () -> Assertions.assertTrue(true));
+  }
+
+  @Test
   public void test_nullOrEmpty_2() {
-    Map<String, String> map = new HashMap<>(1);
-    map.put("Hello", "World");
-    Assertions.assertFalse(Collections.nullOrEmpty(map));
+    Assertions.assertFalse(Collections.nullOrEmpty(Collections.singletonMap("A", "B")));
   }
 
   @Test
   public void test_nonNullNonEmpty() {
-    Assertions.assertTrue(Collections.nonNullNonEmpty(java.util.Collections.singletonList("A")));
+    Assertions.assertTrue(Collections.nonNullNonEmpty(Collections.singletonList("A")));
     Assertions.assertFalse(Collections.nonNullNonEmpty(NULL_LIST));
     Assertions.assertFalse(Collections.nonNullNonEmpty(EMPTY_SET));
   }
 
   @Test
+  public void test_nonNullNonEmpty_ExecutableFunction(){
+    Collections.nonNullNonEmpty(Collections.singletonList("A"), () -> Assertions.assertTrue(true));
+  }
+
+  @Test
   public void test_nonNullNonEmptyMap() {
-    Map<String, String> map = new HashMap<>(1);
-    map.put("Hello", "World");
-    Assertions.assertTrue(Collections.nonNullNonEmpty(map));
+    Assertions.assertTrue(Collections.nonNullNonEmpty(Collections.singletonMap("A", "B")));
 
     Assertions.assertFalse(Collections.nonNullNonEmpty(NULL_MAP));
     Assertions.assertFalse(Collections.nonNullNonEmpty(EMPTY_MAP));
+  }
+
+  @Test
+  public void test_nonNullNonEmptyMap_ExecutableFunction() {
+    Collections.nonNullNonEmpty(Collections.singletonMap("A", "B"), () -> Assertions.assertTrue(true));
   }
 
   @Test

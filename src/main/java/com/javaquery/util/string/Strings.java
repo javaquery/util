@@ -2,7 +2,9 @@ package com.javaquery.util.string;
 
 import com.javaquery.util.Objects;
 import com.javaquery.util.collection.Collections;
+import com.javaquery.util.collection.function.ExecutableFunction;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -30,6 +32,17 @@ public final class Strings {
   }
 
   /**
+   * Execute code if the provided String is {@code null} or empty.
+   * @param str a String to be checked against {@code null} or empty
+   * @param executableFunction lambda function given executed if the provided String is {@code null} or empty.
+   */
+  public static void nullOrEmpty(String str, ExecutableFunction executableFunction){
+    if(nullOrEmpty(str)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
    * Returns {@code true} if the provided String is non-{@code null} and non-empty otherwise returns
    * {@code false}.
    *
@@ -39,6 +52,17 @@ public final class Strings {
    */
   public static boolean nonNullNonEmpty(String str) {
     return Objects.nonNull(str) && !str.trim().isEmpty();
+  }
+
+  /**
+   * Execute code if the provided String is non-{@code null} and non-empty.
+   * @param str a String to be checked against non-{@code null} and non-empty
+   * @param executableFunction lambda function given executed if the provided String is non-{@code null} and non-empty.
+   */
+  public static void nonNullNonEmpty(String str, ExecutableFunction executableFunction) {
+    if(nonNullNonEmpty(str)){
+      executableFunction.execute();
+    }
   }
 
   /**
@@ -138,5 +162,27 @@ public final class Strings {
       return str.replaceAll(UNSUPPORTED_UNICODE_PATTERN, "");
     }
     return null;
+  }
+
+  /**
+   * Normalize a sequence of char values. The sequence will be normalized according to the specified normalization from.
+   *
+   * @param str The sequence of char values to normalize.
+   * @return The normalized String
+   * @throws NullPointerException If src or form is null.
+   */
+  public static String normalize(String str) {
+    return Normalizer.normalize(str, Normalizer.Form.NFD);
+  }
+
+  /**
+   * Check String contains any diacritics or not.
+   * @param str a String to be checked for diacritics Characters
+   * @return {@code true} if the provided String contains diacritics otherwise
+   *     {@code false}
+   */
+  public static boolean hasDiacritics(String str) {
+    String str2 = normalize(str);
+    return str2.matches("(?s).*\\p{InCombiningDiacriticalMarks}.*");
   }
 }

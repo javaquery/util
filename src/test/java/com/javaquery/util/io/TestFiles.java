@@ -12,7 +12,6 @@ import java.util.UUID;
  */
 public class TestFiles {
 
-  private static final String TMP_DIR = System.getProperty("java.io.tmpdir");
   private static final String TEMP_DATA = "Hello World";
   private static final String INVALID_PATH = "T2:" + File.separatorChar + "javaquery.txt";
   private static final String DEMO_JSON_DATA = "{\"name\": \"vicky thakor\"}";
@@ -116,8 +115,12 @@ public class TestFiles {
 
   @Test
   public void test_readFromFile_1() {
+    File file = new File(INVALID_PATH);
+    if(file.exists()){
+      file.delete();
+    }
     // Silent exception logged and for code coverage
-    String result = Files.readFromFile(new File(INVALID_PATH));
+    String result = Files.readFromFile(file);
     Assertions.assertNull(result);
   }
 
@@ -148,7 +151,7 @@ public class TestFiles {
   }
 
   private String getTemporaryFilePath() {
-    return TMP_DIR
+    return Files.SYSTEM_TMP_DIR
         + File.separatorChar
         + "javaquery"
         + File.separatorChar

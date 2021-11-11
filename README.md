@@ -38,6 +38,7 @@ framework and objects.
 - <b>Regex</b>: Provides wide range of operation using regular expression like <code>isNumber(String value)</code>
   , <code>isAlphaNumeric(String value)</code>, <code>isValidEmail(String value)</code>.
 - <b>UniqueIdGenerator</b>: Generate unique time based random alphanumeric string like Firebase keys.
+- <b>LogBuilder</b>: Help you to build Map for Markers used in logging with optional execution time of code or function.
 
 # Maven
 
@@ -45,12 +46,12 @@ framework and objects.
 <dependency>
   <groupId>com.javaquery</groupId>
   <artifactId>util</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ``` 
 
 # Gradle
 
 ```
-implementation 'com.javaquery:util:1.0.5'
+implementation 'com.javaquery:util:1.0.6'
 ```

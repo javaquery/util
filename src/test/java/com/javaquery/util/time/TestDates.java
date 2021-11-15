@@ -14,6 +14,7 @@ import java.util.TimeZone;
 public class TestDates {
 
   private static final Calendar CALENDAR = Calendar.getInstance();
+  private static final String TIMEZONE_SHORT = CALENDAR.getTimeZone().getDisplayName(false, TimeZone.SHORT);
 
   @Test
   public void test_currentTimeMillis() {
@@ -161,13 +162,13 @@ public class TestDates {
   @Test
   public void test_getDate() {
     Date result = Dates.getDate(2020, 1, 20, 10, 10, 10);
-    Assertions.assertEquals("Mon Jan 20 10:10:10 UTC 2020", result.toString());
+    Assertions.assertEquals("Mon Jan 20 10:10:10 " + TIMEZONE_SHORT + " 2020", result.toString());
   }
 
   @Test
   public void test_getDate_1() {
     Date result = Dates.getDate(2020, 1, 20);
-    Assertions.assertEquals("Mon Jan 20 00:00:00 UTC 2020", result.toString());
+    Assertions.assertEquals("Mon Jan 20 00:00:00 " + TIMEZONE_SHORT + " 2020", result.toString());
   }
 
   @Test

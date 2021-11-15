@@ -21,6 +21,10 @@ import java.nio.file.StandardOpenOption;
 public final class Files {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Files.class);
+  /**
+   * returns the system temporary directory location
+   */
+  public static final String SYSTEM_TMP_DIR = System.getProperty("java.io.tmpdir");
 
   /**
    * Create new, empty file at specified path in {@link File} object. This method will also creates

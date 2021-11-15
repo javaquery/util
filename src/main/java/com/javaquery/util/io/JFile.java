@@ -41,7 +41,7 @@ public final class JFile extends File {
    *     access to either the old or new pathnames
    * @throws NullPointerException If parameter <code>dest</code> is <code>null</code>
    */
-  public final JFile rename(String name) {
+  public JFile rename(String name) {
     Assert.nonNull(name, NullPointerException::new);
     if (exists()) {
       boolean result = renameTo(new File(getParent() + File.separatorChar + name));
@@ -53,12 +53,12 @@ public final class JFile extends File {
   }
 
   /** @return String content of this file. */
-  public final String read() {
+  public String read() {
     return Files.readFromFile(this);
   }
 
   /** @param data data to write to this file */
-  public final void write(String data) {
+  public void write(String data) {
     Files.writeToFile(this, data);
   }
 
@@ -67,12 +67,12 @@ public final class JFile extends File {
    * @param appendNewLine <code>true</code> to append new line at the end of data otherwise <code>
    *     false</code>
    */
-  public final void append(String data, boolean appendNewLine) {
+  public void append(String data, boolean appendNewLine) {
     Files.appendToFile(this, data, appendNewLine);
   }
 
   /** @return attributes of file */
-  public final Map<String, String> getAttributes() {
+  public Map<String, String> getAttributes() {
     return attributes;
   }
 
@@ -80,12 +80,12 @@ public final class JFile extends File {
    * @param key a key of attribute
    * @param value a value of attribute
    */
-  public final void addAttribute(String key, String value) {
+  public void addAttribute(String key, String value) {
     attributes.put(key, value);
   }
 
   /** @param attributes add attributes map to file */
-  public final void addAllAttribute(Map<String, String> attributes) {
+  public void addAllAttribute(Map<String, String> attributes) {
     if (Collections.nonNullNonEmpty(attributes)) {
       this.attributes.putAll(attributes);
     }
@@ -96,7 +96,7 @@ public final class JFile extends File {
    * @param defaultValue default value in case attribute not found
    * @return attribute value if found otherwise defaultValue
    */
-  public final String optAttribute(String key, String defaultValue) {
+  public String optAttribute(String key, String defaultValue) {
     return attributes.getOrDefault(key, defaultValue);
   }
 }

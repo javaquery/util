@@ -11,12 +11,26 @@ public class TestObjects {
 
   @Test
   public void test_isNull() {
-    Assertions.assertTrue(Objects.isNull(null));
+    String str = null;
+    Assertions.assertTrue(Objects.isNull(str));
+  }
+
+  @Test
+  public void test_isNull_ExecutableFunction() {
+    String str = null;
+    Objects.isNull(str, ()-> Assertions.assertTrue(true));
   }
 
   @Test
   public void test_NonNull() {
-    Assertions.assertTrue(Objects.nonNull(new Object()));
+    String str = "str";
+    Assertions.assertTrue(Objects.nonNull(str));
+  }
+
+  @Test
+  public void test_NonNull_ExecutableFunction() {
+    String str = "str";
+    Objects.nonNull(str, ()-> Assertions.assertTrue(true));
   }
 
   @Test

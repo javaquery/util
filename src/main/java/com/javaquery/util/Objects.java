@@ -1,5 +1,7 @@
 package com.javaquery.util;
 
+import com.javaquery.util.collection.function.ExecutableFunction;
+
 /**
  * @author vicky.thakor
  * @since 1.0
@@ -19,6 +21,18 @@ public final class Objects {
   }
 
   /**
+   * Execute code if the provided reference is {@code null}.
+   *
+   * @param obj a reference to be checked against {@code null}
+   * @param executableFunction lambda function given executed if the provided reference is {@code null}.
+   */
+  public static void isNull(Object obj, ExecutableFunction executableFunction){
+    if(isNull(obj)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
    * Returns {@code true} if the provided reference is non-{@code null} otherwise returns {@code
    * false}.
    *
@@ -27,6 +41,18 @@ public final class Objects {
    */
   public static boolean nonNull(Object obj) {
     return obj != null;
+  }
+
+  /**
+   * Execute code if the provided reference is non-{@code null}.
+   *
+   * @param obj a reference to be checked against {@code null}
+   * @param executableFunction lambda function given executed if the provided reference is non-{@code null}.
+   */
+  public static void nonNull(Object obj, ExecutableFunction executableFunction){
+    if(nonNull(obj)){
+      executableFunction.execute();
+    }
   }
 
   /**

@@ -1,5 +1,6 @@
 package com.javaquery.util.string;
 
+import com.javaquery.util.io.Console;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -21,10 +22,21 @@ public class TestStrings {
   }
 
   @Test
+  public void test_nullOrEmpty_ExecutableFunction() {
+    Strings.nullOrEmpty(null, () -> Assertions.assertTrue(true));
+    Strings.nullOrEmpty("", () -> Assertions.assertTrue(true));
+  }
+
+  @Test
   public void test_nonNullNonEmpty() {
     Assertions.assertTrue(Strings.nonNullNonEmpty(HELLO));
     Assertions.assertFalse(Strings.nonNullNonEmpty(null));
     Assertions.assertFalse(Strings.nonNullNonEmpty(""));
+  }
+
+  @Test
+  public void test_nonNullNonEmpty_ExecutableFunction() {
+    Strings.nonNullNonEmpty(HELLO, () -> Assertions.assertTrue(true));
   }
 
   @Test
@@ -74,5 +86,19 @@ public class TestStrings {
     Assertions.assertEquals("Thats a nice joke ", Strings.removeNotSupportedUnicodeCharacters(str));
 
     Assertions.assertNull(null, Strings.removeNotSupportedUnicodeCharacters(null));
+  }
+
+  @Test
+  public void test_normalize(){
+    String str = "aeiöu";
+    String normalizedString = "aeiöu";
+    Assertions.assertEquals(normalizedString, Strings.normalize(str));
+  }
+
+  @Test
+  public void test_hasDiacritics(){
+    String str = "aeiöu";
+    Assertions.assertTrue(Strings.hasDiacritics(str));
+    Assertions.assertFalse(Strings.hasDiacritics(HELLO));
   }
 }

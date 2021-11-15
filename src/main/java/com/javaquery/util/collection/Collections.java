@@ -2,13 +2,17 @@ package com.javaquery.util.collection;
 
 import com.javaquery.util.Assert;
 import com.javaquery.util.Objects;
+import com.javaquery.util.collection.function.ExecutableFunction;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.Collections.*;
 
 /**
  * @author vicky.thakor
@@ -17,6 +21,72 @@ import java.util.stream.Stream;
 public final class Collections {
 
   private Collections() {}
+
+  /**
+   * Provide access to {@link java.util.Collections} method singleton.<br/>
+   *
+   * Returns an immutable set containing only the specified object. The returned set is serializable.
+   *
+   * @param o the sole object to be stored in the returned set.
+   * @param <T> the class of the objects in the set
+   * @return an immutable set containing only the specified object.
+   */
+  public static <T> Set<T> singleton(T o) {
+    return java.util.Collections.singleton(o);
+  }
+
+  /**
+   * Provide access to {@link java.util.Collections} method singletonList.<br/>
+   * Returns an immutable list containing only the specified object. The returned list is serializable.
+   * @param o the class of the objects in the list
+   * @param <T> the class of the objects in the list
+   * @return an immutable list containing only the specified object.
+   */
+  public static <T> List<T> singletonList(T o) {
+    return java.util.Collections.singletonList(o);
+  }
+
+  /**
+   * Provide access to {@link java.util.Collections} method singletonMap.<br/>
+   * Returns an immutable map, mapping only the specified key to the specified value. The returned map is serializable.
+   *
+   * @param key the sole key to be stored in the returned map.
+   * @param value the value to which the returned map maps key.
+   * @param <K> the class of the map keys
+   * @param <V> the class of the map value
+   * @return an immutable map containing only the specified key-value mapping.
+   */
+  public static <K, V> Map<K, V> singletonMap(K key, V value) {
+    return java.util.Collections.singletonMap(key, value);
+  }
+
+  /**
+   * Provide access to {@link java.util.Collections} method emptySet.<br/>
+   * Returns an empty set (immutable). This set is serializable. Unlike the like-named field, this method is parameterized.
+   * @param <T> the class of the objects in the set
+   * @return the empty set
+   */
+  public static <T> Set<T> emptySet() {
+    return EMPTY_SET;
+  }
+
+  /**
+   * Provide access to {@link java.util.Collections} method emptyList.<br/>
+   * @param <T> type of elements, if there were any, in the list
+   * @return an empty immutable list
+   */
+  public static <T> List<T> emptyList() {return EMPTY_LIST;  }
+
+  /**
+   * Provide access to {@link java.util.Collections} method emptyMap.<br/>
+   * Returns an empty map (immutable). This map is serializable.
+   * @param <K> the class of the map keys
+   * @param <V> the class of the map values
+   * @return an empty map
+   */
+  public static <K, V> Map<K, V> emptyMap() {
+    return EMPTY_MAP;
+  }
 
   /**
    * Returns {@code true} if the provided Collection [List, Set] is {@code null} or empty otherwise
@@ -28,6 +98,17 @@ public final class Collections {
    */
   public static boolean nullOrEmpty(Collection<?> collection) {
     return Objects.isNull(collection) || collection.isEmpty();
+  }
+
+  /**
+   * Execute code if the provided Collection [List, Set] is {@code null} or empty.
+   * @param collection a Collection [List, Set] to be checked against {@code null} or empty
+   * @param executableFunction lambda function given executed if the provided Collection [List, Set] is {@code null} or empty.
+   */
+  public static void nullOrEmpty(Collection<?> collection, ExecutableFunction executableFunction) {
+    if(nullOrEmpty(collection)){
+      executableFunction.execute();
+    }
   }
 
   /**
@@ -43,7 +124,18 @@ public final class Collections {
   }
 
   /**
-   * Returns {@code true} if the provided Map is {@code null} and empty otherwise returns {@code
+   * Execute code if the provided Collection [List, Set] is non-{@code null} and non-empty.
+   * @param collection collection a Collection [List, Set] to be checked against non-{@code null} and non-empty
+   * @param executableFunction lambda function given executed if the provided Collection [List, Set] is non-{@code null} and non-empty.
+   */
+  public static void  nonNullNonEmpty(Collection<?> collection, ExecutableFunction executableFunction){
+    if(nonNullNonEmpty(collection)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
+   * Returns {@code true} if the provided Map is {@code null} or empty otherwise returns {@code
    * false}.
    *
    * @param map a Map to be checked against {@code null} or empty
@@ -52,6 +144,17 @@ public final class Collections {
    */
   public static boolean nullOrEmpty(Map<?, ?> map) {
     return Objects.isNull(map) || map.isEmpty();
+  }
+
+  /**
+   * Execute code if the provided Map is {@code null} or empty
+   * @param map a Map to be checked against {@code null} or empty
+   * @param executableFunction lambda function given executed if the provided Map is {@code null} or empty
+   */
+  public static void nullOrEmpty(Map<?, ?> map, ExecutableFunction executableFunction){
+    if(nullOrEmpty(map)){
+      executableFunction.execute();
+    }
   }
 
   /**
@@ -64,6 +167,17 @@ public final class Collections {
    */
   public static boolean nonNullNonEmpty(Map<?, ?> map) {
     return Objects.nonNull(map) && !map.isEmpty();
+  }
+
+  /**
+   * Execute code if the provided Map is non-{@code null} and non-empty
+   * @param map  a Map to be checked against non-{@code null} and non-empty
+   * @param executableFunction lambda function given executed if the provided Map is non-{@code null} and non-empty
+   */
+  public static void nonNullNonEmpty(Map<?, ?> map, ExecutableFunction executableFunction){
+    if(nonNullNonEmpty(map)){
+      executableFunction.execute();
+    }
   }
 
   /**

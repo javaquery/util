@@ -1,6 +1,5 @@
 package com.javaquery.util.string;
 
-import com.javaquery.util.io.Console;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -100,5 +99,32 @@ public class TestStrings {
     String str = "aeiöu";
     Assertions.assertTrue(Strings.hasDiacritics(str));
     Assertions.assertFalse(Strings.hasDiacritics(HELLO));
+  }
+
+  @Test
+  public void test_equals(){
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.equals("A", "A", () -> {throw new RuntimeException("Function executed when two Strings are equal");}));
+    Strings.equals("A", "a", () -> {throw new RuntimeException("Function won't execute when two Strings are equal with ignore case");});
+    Strings.equals("A", "B", () -> {throw new RuntimeException("Function won't execute when two Strings are not equal");});
+  }
+
+  @Test
+  public void test_notEquals(){
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.notEquals("A", "B", () -> {throw new RuntimeException("Function executed when two Strings are not equal");}));
+    Strings.notEquals("A", "A", () -> {throw new RuntimeException("Function won't execute when two Strings are equal");});
+  }
+
+  @Test
+  public void test_equalsIgnoreCase(){
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.equalsIgnoreCase("A", "A", () -> {throw new RuntimeException("Function executed when two Strings are equalsIgnoreCase");}));
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.equalsIgnoreCase("A", "a", () -> {throw new RuntimeException("Function executed when two Strings are equalsIgnoreCase");}));
+    Strings.equalsIgnoreCase("A", "b", () -> {throw new RuntimeException("Function won't execute when two Strings are not equalsIgnoreCase");});
+  }
+
+  @Test
+  public void test_notEqualsIgnoreCase(){
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.notEqualsIgnoreCase("A", "B", () -> {throw new RuntimeException("Function executed when two Strings are not equalsIgnoreCase");}));
+    Assertions.assertThrows(RuntimeException.class, () -> Strings.notEqualsIgnoreCase("A", "b", () -> {throw new RuntimeException("Function executed when two Strings are not equalsIgnoreCase");}));
+    Strings.notEqualsIgnoreCase("A", "a", () -> {throw new RuntimeException("Function won't execute when two Strings are equalsIgnoreCase");});
   }
 }

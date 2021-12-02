@@ -185,4 +185,61 @@ public final class Strings {
     String str2 = normalize(str);
     return str2.matches("(?s).*\\p{InCombiningDiacriticalMarks}.*");
   }
+
+  /**
+   * Compares this string to the specified string. The result is true if and only if the argument is not null and
+   * is a String object that represents the same sequence of characters as this object.
+   * @param a String
+   * @param b String to be compared with {@code a} for equality
+   * @param executableFunction lambda function given executed if the provided Strings are equals.
+   */
+  public static void equals(String a, String b, ExecutableFunction executableFunction){
+    if(Objects.equals(a, b)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
+   * Compares this string to the specified string. The result is true if and only if the one argument is null or
+   * a String object that represents the different sequence of characters as this object.
+   * @param a String
+   * @param b String to be compared with {@code a} for non equality
+   * @param executableFunction lambda function given executed if the provided Strings are not equals.
+   */
+  public static void notEquals(String a, String b, ExecutableFunction executableFunction){
+    if(!Objects.equals(a, b)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
+   * Compares this String to another String, ignoring case considerations. Two strings are considered equal ignoring case if they are of the same length and corresponding characters in the two strings are equal ignoring case.
+   * Two characters c1 and c2 are considered the same ignoring case if at least one of the following is true:
+   * <ul>
+   *     <li>The two characters are the same (as compared by the == operator)</li>
+   *     <li>Calling Character.toLowerCase(Character.toUpperCase(char)) on each character produces the same result</li>
+   * </ul>
+   *
+   * @param a String
+   * @param b String to be compared with {@code a} for equality (ignoring case considerations)
+   * @param executableFunction lambda function given executed if the provided Strings are equals (ignoring case considerations).
+   */
+  public static void equalsIgnoreCase(String a, String b, ExecutableFunction executableFunction){
+    if(a != null && a.equalsIgnoreCase(b)){
+      executableFunction.execute();
+    }
+  }
+
+  /**
+   * Compares this String to another String, ignoring case considerations. Two strings are considered not equal ignoring case if they are of the not same length and corresponding characters in the two strings are not equal ignoring case.
+   *
+   * @param a String
+   * @param b String to be compared with {@code a} for non equality (ignoring case considerations)
+   * @param executableFunction lambda function given executed if the provided Strings are non equals (ignoring case considerations).
+   */
+  public static void notEqualsIgnoreCase(String a, String b, ExecutableFunction executableFunction){
+    if(a != null && !a.equalsIgnoreCase(b)){
+      executableFunction.execute();
+    }
+  }
 }

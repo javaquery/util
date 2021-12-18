@@ -15,7 +15,6 @@ import java.util.TimeZone;
 public final class Dates {
 
   public static final TimeZone SYSTEM_TIMEZONE = TimeZone.getDefault();
-  private static final Calendar CALENDAR = Calendar.getInstance();
 
   private Dates() {}
 
@@ -205,8 +204,9 @@ public final class Dates {
    * @return Returns {@code Date} with given year, month, day, hour, minute, seconds
    */
   public static Date getDate(int year, int month, int day, int hour, int minute, int seconds) {
-    CALENDAR.set(year, --month, day, hour, minute, seconds);
-    return CALENDAR.getTime();
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(year, --month, day, hour, minute, seconds);
+    return calendar.getTime();
   }
 
   /**

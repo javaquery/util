@@ -6,7 +6,7 @@ Welcome to the JavaQuery util library
 
 # Overview
 
-Goal is to remove repeated boler plate utility code from your project. This library offers util classes of following
+Goal is to remove repeated boilerplate utility code from your project. This library offers util classes of following
 framework and objects.
 
 - <b>Collections</b>: Provides wide range of operation you perform on collection (List, Set and Map) interfaces
@@ -39,6 +39,9 @@ framework and objects.
   , <code>isAlphaNumeric(String value)</code>, <code>isValidEmail(String value)</code>.
 - <b>UniqueIdGenerator</b>: Generate unique time based random alphanumeric string like Firebase keys.
 - <b>LogBuilder</b>: Help you to build Map for Markers used in logging with optional execution time of code or function.
+- <b>JHashMap</b>: Build on top of HashMap. Provide you extra functionality to opt values.
+- <b>ExecutionContext</b>: Help you to transfer data between method calls and log extra details.
+- <b>CommonResponse</b>: Build common http response object.
 
 # Maven
 

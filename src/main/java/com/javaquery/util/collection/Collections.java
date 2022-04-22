@@ -23,7 +23,7 @@ public final class Collections {
   private Collections() {}
 
   /**
-   * Provide access to {@link java.util.Collections} method singleton.<br/>
+   * Provide access to {@link java.util.Collections} method singleton.<br>
    *
    * Returns an immutable set containing only the specified object. The returned set is serializable.
    *
@@ -36,7 +36,7 @@ public final class Collections {
   }
 
   /**
-   * Provide access to {@link java.util.Collections} method singletonList.<br/>
+   * Provide access to {@link java.util.Collections} method singletonList.<br>
    * Returns an immutable list containing only the specified object. The returned list is serializable.
    * @param o the class of the objects in the list
    * @param <T> the class of the objects in the list
@@ -47,7 +47,7 @@ public final class Collections {
   }
 
   /**
-   * Provide access to {@link java.util.Collections} method singletonMap.<br/>
+   * Provide access to {@link java.util.Collections} method singletonMap.<br>
    * Returns an immutable map, mapping only the specified key to the specified value. The returned map is serializable.
    *
    * @param key the sole key to be stored in the returned map.
@@ -61,7 +61,7 @@ public final class Collections {
   }
 
   /**
-   * Provide access to {@link java.util.Collections} method emptySet.<br/>
+   * Provide access to {@link java.util.Collections} method emptySet.<br>
    * Returns an empty set (immutable). This set is serializable. Unlike the like-named field, this method is parameterized.
    * @param <T> the class of the objects in the set
    * @return the empty set
@@ -71,14 +71,14 @@ public final class Collections {
   }
 
   /**
-   * Provide access to {@link java.util.Collections} method emptyList.<br/>
+   * Provide access to {@link java.util.Collections} method emptyList.<br>
    * @param <T> type of elements, if there were any, in the list
    * @return an empty immutable list
    */
   public static <T> List<T> emptyList() {return EMPTY_LIST;  }
 
   /**
-   * Provide access to {@link java.util.Collections} method emptyMap.<br/>
+   * Provide access to {@link java.util.Collections} method emptyMap.<br>
    * Returns an empty map (immutable). This map is serializable.
    * @param <K> the class of the map keys
    * @param <V> the class of the map values

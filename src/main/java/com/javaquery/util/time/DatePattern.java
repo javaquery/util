@@ -1,9 +1,9 @@
 package com.javaquery.util.time;
 
 /**
+ * https//docs.datastax.com/en/astra-cql/doc/cql/cql_reference/refDateTimeFormats.html
  * @author vicky.thakor
  * @since 1.0
- * @see https://docs.datastax.com/en/astra-cql/doc/cql/cql_reference/refDateTimeFormats.html
  */
 public enum DatePattern implements DateTimeFormat {
   Y_M_D("yyyyMMdd"),

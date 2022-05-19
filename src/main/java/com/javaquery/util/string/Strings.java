@@ -222,10 +222,28 @@ public final class Strings {
    *
    * @param a String
    * @param b String to be compared with {@code a} for equality (ignoring case considerations)
+   * @return {@code true} if the provided Strings are equalsIgnoreCase otherwise
+   *    *     {@code false}
+   */
+  public static boolean equalsIgnoreCase(String a, String b){
+    return (a == null && b == null)
+            || (a != null && a.equalsIgnoreCase(b));
+  }
+
+  /**
+   * Compares this String to another String, ignoring case considerations. Two strings are considered equal ignoring case if they are of the same length and corresponding characters in the two strings are equal ignoring case.
+   * Two characters c1 and c2 are considered the same ignoring case if at least one of the following is true:
+   * <ul>
+   *     <li>The two characters are the same (as compared by the == operator)</li>
+   *     <li>Calling Character.toLowerCase(Character.toUpperCase(char)) on each character produces the same result</li>
+   * </ul>
+   *
+   * @param a String
+   * @param b String to be compared with {@code a} for equality (ignoring case considerations)
    * @param executableFunction lambda function given executed if the provided Strings are equals (ignoring case considerations).
    */
   public static void equalsIgnoreCase(String a, String b, ExecutableFunction executableFunction){
-    if(a != null && a.equalsIgnoreCase(b)){
+    if(equalsIgnoreCase(a, b)){
       executableFunction.execute();
     }
   }
@@ -238,7 +256,7 @@ public final class Strings {
    * @param executableFunction lambda function given executed if the provided Strings are non equals (ignoring case considerations).
    */
   public static void notEqualsIgnoreCase(String a, String b, ExecutableFunction executableFunction){
-    if(a != null && !a.equalsIgnoreCase(b)){
+    if(!equalsIgnoreCase(a, b)){
       executableFunction.execute();
     }
   }

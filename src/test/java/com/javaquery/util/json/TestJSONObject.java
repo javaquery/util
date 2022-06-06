@@ -22,6 +22,13 @@ public class TestJSONObject {
   private static final JSONObject JSONOBJECT = new JSONObject(STRING_JSON_OBJECT);
 
   @Test
+  public void test_put(){
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("a", 10);
+    Assertions.assertEquals(10, jsonObject.optInt("a"));
+  }
+
+  @Test
   public void test_optBoolean() {
     Assertions.assertTrue(JSONOBJECT.optBoolean("items.item[0].batters.batter[0].available"));
     Assertions.assertTrue(JSONOBJECT.optBoolean("items.item[0].batters.batter[2].available", true));

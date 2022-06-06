@@ -2,7 +2,7 @@ package com.javaquery.util.iface;
 
 /**
  * @author vicky.thakor
- * @since 2022-05-16
+ * @since 1.2.1
  */
 public interface Processor<T, R> {
 

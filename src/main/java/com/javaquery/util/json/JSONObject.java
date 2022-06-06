@@ -5,6 +5,7 @@ import com.javaquery.util.string.Strings;
 import com.javaquery.util.time.DateTimeFormat;
 import com.javaquery.util.time.Dates;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -27,10 +28,35 @@ public final class JSONObject {
     this(new org.json.JSONObject(json));
   }
 
+  public JSONObject(){
+    this(new org.json.JSONObject());
+  }
+
   /** @param jsonObject {@link org.json.JSONObject} to prepare {@link JSONObject} */
   public JSONObject(org.json.JSONObject jsonObject) {
     ROOT = jsonObject;
     CACHED_OBJECT = new HashMap<>();
+  }
+
+  /**
+   * Put a key/value pair in the JSONObject. If the value is <code>null</code>, then the
+   * key will be removed from the JSONObject if it is present.
+   *
+   * @param key
+   *            A key string.
+   * @param value
+   *            An object which is the value. It should be of one of these
+   *            types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
+   *            String, or the JSONObject.NULL object.
+   * @return this.
+   * @throws JSONException
+   *            If the value is non-finite number.
+   * @throws NullPointerException
+   *            If the key is <code>null</code>.
+   */
+  public JSONObject put(String key, Object value){
+    ROOT.put(key, value);
+    return this;
   }
 
   /**

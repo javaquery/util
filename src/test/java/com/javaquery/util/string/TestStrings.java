@@ -116,6 +116,15 @@ public class TestStrings {
 
   @Test
   public void test_equalsIgnoreCase(){
+    Assertions.assertTrue(Strings.equalsIgnoreCase("a", "A"));
+    Assertions.assertTrue(Strings.equalsIgnoreCase("a", "a"));
+    Assertions.assertTrue(Strings.equalsIgnoreCase(null, null));
+    Assertions.assertFalse(Strings.equalsIgnoreCase("a", null));
+    Assertions.assertFalse(Strings.equalsIgnoreCase(null, "b"));
+  }
+
+  @Test
+  public void test_equalsIgnoreCaseWithExecutableFunction(){
     Assertions.assertThrows(RuntimeException.class, () -> Strings.equalsIgnoreCase("A", "A", () -> {throw new RuntimeException("Function executed when two Strings are equalsIgnoreCase");}));
     Assertions.assertThrows(RuntimeException.class, () -> Strings.equalsIgnoreCase("A", "a", () -> {throw new RuntimeException("Function executed when two Strings are equalsIgnoreCase");}));
     Strings.equalsIgnoreCase("A", "b", () -> {throw new RuntimeException("Function won't execute when two Strings are not equalsIgnoreCase");});

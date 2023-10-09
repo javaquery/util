@@ -2,6 +2,7 @@ package com.javaquery.util;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.javaquery.util.logging.Action;
+import com.javaquery.util.logging.ActivityStatus;
 import com.javaquery.util.time.Dates;
 
 import java.util.Date;
@@ -12,14 +13,22 @@ import java.util.Map;
  * @author vicky.thakor
  * @since 1.2.0
  */
-public class ExecutionContext<T> {
+public class ExecutionContext<T, V> {
 
     @JsonProperty("request_id")
-    private final String requestId;
+    private String requestId;
 
     @JsonProperty("reference_id")
     private T referenceId;
-    private final Action action;
+
+    @JsonProperty("user")
+    private V userContext;
+
+    private Action action;
+
+    @JsonProperty("activity_status")
+    private ActivityStatus activityStatus;
+
     private Map<String, Object> meta;
 
     @JsonProperty("max_retries")
@@ -30,6 +39,15 @@ public class ExecutionContext<T> {
 
     @JsonProperty("created_at")
     private final Date createdAt;
+
+    public ExecutionContext() {
+        this.createdAt = Dates.current();
+    }
+
+    public ExecutionContext(String requestId){
+        this.requestId = requestId;
+        this.createdAt = Dates.current();
+    }
 
     public ExecutionContext(String requestId, T referenceId, Action action) {
         this.requestId = requestId;
@@ -75,12 +93,36 @@ public class ExecutionContext<T> {
         return requestId;
     }
 
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public V getUserContext() {
+        return userContext;
+    }
+
+    public void setUserContext(V userContext) {
+        this.userContext = userContext;
+    }
+
     public T getReferenceId() {
         return referenceId;
     }
 
     public Action getAction() {
         return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    public ActivityStatus getActivityStatus() {
+        return activityStatus;
+    }
+
+    public void setActivityStatus(ActivityStatus activityStatus) {
+        this.activityStatus = activityStatus;
     }
 
     public Map<String, Object> getMeta() {

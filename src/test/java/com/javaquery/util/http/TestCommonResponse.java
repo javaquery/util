@@ -44,4 +44,15 @@ public class TestCommonResponse {
         Assertions.assertEquals(HttpStatus.BAD_REQUEST.value(), commonResponse.getStatusCode());
         Assertions.assertEquals("errorMessage", commonResponse.getErrorMessages().get(0));
     }
+
+    @Test
+    public void okWithPaging(){
+        CommonResponse<Long> commonResponse = CommonResponse.of(HttpStatus.CREATED, 1L);
+        commonResponse.setPage(1).setLimit(10).setTotal(100);
+        Assertions.assertEquals(HttpStatus.CREATED.value(), commonResponse.getStatusCode());
+        Assertions.assertEquals(1L, commonResponse.getPayload());
+        Assertions.assertEquals(1, commonResponse.getPage());
+        Assertions.assertEquals(10, commonResponse.getLimit());
+        Assertions.assertEquals(100, commonResponse.getTotal());
+    }
 }

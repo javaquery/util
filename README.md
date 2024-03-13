@@ -49,12 +49,12 @@ framework and objects.
 <dependency>
   <groupId>com.javaquery</groupId>
   <artifactId>util</artifactId>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
 </dependency>
 ``` 
 
 # Gradle
 
 ```
-implementation 'com.javaquery:util:1.2.2'
+implementation 'com.javaquery:util:1.2.3'
 ```

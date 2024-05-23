@@ -34,6 +34,19 @@ public class TestFiles {
   }
 
   @Test
+  public void test_deleteIfExists_success() {
+    File file = new File(getTemporaryFilePath());
+    Files.createNewFile(file);
+    Assertions.assertTrue(Files.deleteIfExists(file));
+  }
+
+  @Test
+  public void test_deleteIfExists_failure() {
+    File file = new File(getTemporaryFilePath());
+    Assertions.assertFalse(Files.deleteIfExists(file));
+  }
+
+  @Test
   public void test_deleteAndCreateNewFile() {
     File file = new File(getTemporaryFilePath());
     Files.createNewFile(file);

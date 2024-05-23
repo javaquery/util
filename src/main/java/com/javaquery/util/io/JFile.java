@@ -99,4 +99,12 @@ public final class JFile extends File {
   public String optAttribute(String key, String defaultValue) {
     return attributes.getOrDefault(key, defaultValue);
   }
+
+  /**
+   * delete file if exists.
+   * @return <code>true</code> if and only if the file or directory is successfully deleted; <code>false</code> otherwise
+   */
+  public boolean deleteIfExists() {
+    return exists() && delete();
+  }
 }

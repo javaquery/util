@@ -25,9 +25,9 @@ public class CommonResponse<T> implements Serializable {
     @JsonProperty("error_messages")
     private final List<String> errorMessages;
 
-    private int page;
-    private int limit;
-    private int total;
+    private Long page;
+    private Long limit;
+    private Long total;
 
     private CommonResponse(int statusCode, String message, T payload, List<String> errorMessages) {
         this.statusCode = statusCode;
@@ -72,29 +72,29 @@ public class CommonResponse<T> implements Serializable {
         return errorMessages;
     }
 
-    public int getPage() {
+    public Long getPage() {
         return page;
     }
 
-    public CommonResponse<T> setPage(int page) {
+    public CommonResponse<T> withPage(Long page){
         this.page = page;
         return this;
     }
 
-    public int getLimit() {
+    public Long getLimit() {
         return limit;
     }
 
-    public CommonResponse<T> setLimit(int limit) {
+    public CommonResponse<T> withLimit(Long limit){
         this.limit = limit;
         return this;
     }
 
-    public int getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public CommonResponse<T> setTotal(int total) {
+    public CommonResponse<T> withTotal(Long total){
         this.total = total;
         return this;
     }

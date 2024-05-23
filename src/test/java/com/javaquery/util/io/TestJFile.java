@@ -78,6 +78,19 @@ public class TestJFile {
     Assertions.assertEquals(2, jFile.getAttributes().size());
   }
 
+  @Test
+  public void test_deleteIfExists_success() {
+    JFile jFile = new JFile(TEMP_DIR + File.separatorChar + randomFileName(".txt"));
+    jFile.write("hello");
+    Assertions.assertTrue(jFile.deleteIfExists());
+  }
+
+  @Test
+  public void test_deleteIfExists_failure() {
+    JFile jFile = new JFile(TEMP_DIR + File.separatorChar + randomFileName(".txt"));
+    Assertions.assertFalse(jFile.deleteIfExists());
+  }
+
   private String randomFileName(String suffix) {
     return UUID.randomUUID().toString().replace("-", "") + suffix;
   }

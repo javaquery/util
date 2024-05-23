@@ -48,11 +48,11 @@ public class TestCommonResponse {
     @Test
     public void okWithPaging(){
         CommonResponse<Long> commonResponse = CommonResponse.of(HttpStatus.CREATED, 1L);
-        commonResponse.setPage(1).setLimit(10).setTotal(100);
+        commonResponse.withPage(1L).withLimit(10L).withTotal(100L);
         Assertions.assertEquals(HttpStatus.CREATED.value(), commonResponse.getStatusCode());
         Assertions.assertEquals(1L, commonResponse.getPayload());
-        Assertions.assertEquals(1, commonResponse.getPage());
-        Assertions.assertEquals(10, commonResponse.getLimit());
-        Assertions.assertEquals(100, commonResponse.getTotal());
+        Assertions.assertEquals(1L, commonResponse.getPage());
+        Assertions.assertEquals(10L, commonResponse.getLimit());
+        Assertions.assertEquals(100L, commonResponse.getTotal());
     }
 }

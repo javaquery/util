@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class TestStrings {
 
   private static final String HELLO = "Hello World!";
+  private static final String DEFAULT_VALUE = "Default";
 
   @Test
   public void test_nullOrEmpty() {
@@ -27,6 +28,14 @@ public class TestStrings {
   }
 
   @Test
+  public void test_nullOrEmpty_withDefaultValue() {
+    Assertions.assertEquals(DEFAULT_VALUE, Strings.nullOrEmpty(null, DEFAULT_VALUE));
+    Assertions.assertEquals(DEFAULT_VALUE, Strings.nullOrEmpty("", DEFAULT_VALUE));
+    Assertions.assertEquals(HELLO, Strings.nullOrEmpty(HELLO, "Default"));
+  }
+
+
+  @Test
   public void test_nonNullNonEmpty() {
     Assertions.assertTrue(Strings.nonNullNonEmpty(HELLO));
     Assertions.assertFalse(Strings.nonNullNonEmpty(null));
@@ -36,6 +45,13 @@ public class TestStrings {
   @Test
   public void test_nonNullNonEmpty_ExecutableFunction() {
     Strings.nonNullNonEmpty(HELLO, () -> Assertions.assertTrue(true));
+  }
+
+  @Test
+  public void test_nonNullNonEmpty_withDefaultValue() {
+    Assertions.assertEquals(HELLO, Strings.nonNullNonEmpty(HELLO, DEFAULT_VALUE));
+    Assertions.assertEquals(DEFAULT_VALUE, Strings.nonNullNonEmpty(null, DEFAULT_VALUE));
+    Assertions.assertEquals(DEFAULT_VALUE, Strings.nonNullNonEmpty("", DEFAULT_VALUE));
   }
 
   @Test

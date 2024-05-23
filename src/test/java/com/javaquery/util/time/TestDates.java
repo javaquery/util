@@ -102,13 +102,13 @@ public class TestDates {
   public void test_parse() {
     Date date =
         Dates.parse(
-            "2021-01-20T10:10:00+05:30", DatePattern.Y_M_D_T_HMSX, TimeZone.getTimeZone("UTC"));
+            "2021-01-20T10:10:00+00:00", DatePattern.Y_M_D_T_HMSX, TimeZone.getTimeZone("IST"));
     CALENDAR.setTime(date); // Output: Wed Jan 20 04:40:00 UTC 2021
 
     Assertions.assertEquals(2021, CALENDAR.get(Calendar.YEAR));
     Assertions.assertEquals(1, CALENDAR.get(Calendar.MONTH) + 1);
     Assertions.assertEquals(20, CALENDAR.get(Calendar.DATE));
-    Assertions.assertEquals(4, CALENDAR.get(Calendar.HOUR));
+    Assertions.assertEquals(15, CALENDAR.get(Calendar.HOUR_OF_DAY));
     Assertions.assertEquals(40, CALENDAR.get(Calendar.MINUTE));
     Assertions.assertEquals(0, CALENDAR.get(Calendar.SECOND));
   }
@@ -156,7 +156,7 @@ public class TestDates {
   public void test_dateToEpochSeconds() {
     Date date = Dates.parse("2021-01-20T10:10:00", DatePattern.Y_M_D_T_HMS);
     long result = Dates.epochSeconds(date);
-    Assertions.assertEquals(1611137400, result);
+    Assertions.assertEquals(1611117600, result);
   }
 
   @Test

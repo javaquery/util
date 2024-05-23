@@ -43,6 +43,16 @@ public final class Strings {
   }
 
   /**
+   * Checks if the provided String is {@code null} or empty.
+   * @param str a String to be checked against {@code null} or empty
+   * @param defaultValue - if the provided String is {@code null} or empty then this value will be returned.
+   * @return provided String if non-{@code null} and non-empty otherwise defaultValue
+   */
+  public static String nullOrEmpty(String str, String defaultValue){
+    return nullOrEmpty(str) ? defaultValue : str;
+  }
+
+  /**
    * Returns {@code true} if the provided String is non-{@code null} and non-empty otherwise returns
    * {@code false}.
    *
@@ -63,6 +73,16 @@ public final class Strings {
     if(nonNullNonEmpty(str)){
       executableFunction.execute();
     }
+  }
+
+  /**
+   * Checks if the provided String is non-{@code null} and non-empty.
+   * @param str a String to be checked against non-{@code null} and non-empty
+   * @param defaultValue - if the provided String is non-{@code null} and non-empty then this value will be returned.
+   * @return provided String if non-{@code null} and non-empty otherwise defaultValue
+   */
+  public static String nonNullNonEmpty(String str, String defaultValue){
+    return nonNullNonEmpty(str) ? str : defaultValue;
   }
 
   /**

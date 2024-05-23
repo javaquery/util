@@ -128,7 +128,7 @@ public final class Collections {
    * @param collection collection a Collection [List, Set] to be checked against non-{@code null} and non-empty
    * @param executableFunction lambda function given executed if the provided Collection [List, Set] is non-{@code null} and non-empty.
    */
-  public static void  nonNullNonEmpty(Collection<?> collection, ExecutableFunction executableFunction){
+  public static void nonNullNonEmpty(Collection<?> collection, ExecutableFunction executableFunction){
     if(nonNullNonEmpty(collection)){
       executableFunction.execute();
     }

@@ -27,6 +27,11 @@ public final class Files {
   public static final String SYSTEM_TMP_DIR = System.getProperty("java.io.tmpdir");
 
   /**
+   * returns the current working directory location
+   */
+  public static final String CURRENT_WORKING_DIR = System.getProperty("user.dir");
+
+  /**
    * Create new, empty file at specified path in {@link File} object. This method will also creates
    * folder structure if not exists.
    *
@@ -48,6 +53,15 @@ public final class Files {
       }
     }
     return false;
+  }
+
+  /**
+   * Delete file if exists.
+   * @param file - file to delete
+   * @return <code>true</code> if and only if the file or directory is successfully deleted; <code>false</code> otherwise
+   */
+  public static <T extends File> boolean deleteIfExists(T file) {
+    return file.exists() && file.delete();
   }
 
   /**

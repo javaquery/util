@@ -29,4 +29,13 @@ public class TestDateRange {
     Assertions.assertEquals(startDate, dateRange.getStartDate());
     Assertions.assertNotNull(dateRange.getEndDate());
   }
+
+  @Test
+  public void test_days(){
+    Date startDate = Dates.getDate(2024, 11, 1);
+    Date endDate = Dates.getDate(2024, 11, 18);
+
+    DateRange dateRange = new DateRange(startDate, endDate);
+    Assertions.assertEquals(17, dateRange.days());
+  }
 }

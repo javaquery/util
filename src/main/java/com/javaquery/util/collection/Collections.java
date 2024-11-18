@@ -135,6 +135,18 @@ public final class Collections {
   }
 
   /**
+   * Returns a Stream of the provided Collection [List, Set] if the provided Collection [List, Set] is
+   * non-{@code null} and non-empty otherwise returns an empty Stream.
+   *
+   * @param collection a Collection [List, Set] to be checked against non-{@code null} and non-empty
+   * @return a Stream of the provided Collection [List, Set] if the provided Collection [List, Set] is
+   *     non-{@code null} and non-empty otherwise returns an empty Stream
+   */
+  public static Stream<?> notEmpty(Collection<?> collection) {
+    return nonNullNonEmpty(collection) ? collection.stream() : Stream.empty();
+  }
+
+  /**
    * Returns {@code true} if the provided Map is {@code null} or empty otherwise returns {@code
    * false}.
    *

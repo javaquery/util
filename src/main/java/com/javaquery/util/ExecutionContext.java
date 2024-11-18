@@ -46,6 +46,7 @@ public class ExecutionContext<T, V> {
 
     public ExecutionContext(String requestId){
         this.requestId = requestId;
+        this.meta = new HashMap<>();
         this.createdAt = Dates.current();
     }
 
@@ -58,35 +59,20 @@ public class ExecutionContext<T, V> {
     }
 
     public ExecutionContext(T referenceId, Action action) {
-        this.requestId = UniqueIdGenerator.generate();
-        this.referenceId = referenceId;
-        this.action = action;
-        this.meta = new HashMap<>();
-        this.createdAt = Dates.current();
-    }
-
-    public ExecutionContext(Action action) {
-        this.requestId = UniqueIdGenerator.generate();
-        this.action = action;
-        this.meta = new HashMap<>();
-        this.createdAt = Dates.current();
+        this(UniqueIdGenerator.generate(), referenceId, action);
     }
 
     public ExecutionContext(T referenceId, Action action, Integer maxRetries) {
-        this.requestId = UniqueIdGenerator.generate();
-        this.referenceId = referenceId;
-        this.action = action;
+        this(referenceId, action);
         this.maxRetries = maxRetries;
-        this.meta = new HashMap<>();
-        this.createdAt = Dates.current();
     }
 
     public ExecutionContext(Action action, Integer maxRetries) {
-        this.requestId = UniqueIdGenerator.generate();
-        this.action = action;
-        this.maxRetries = maxRetries;
-        this.meta = new HashMap<>();
-        this.createdAt = Dates.current();
+        this(null, action, maxRetries);
+    }
+
+    public ExecutionContext(Action action) {
+        this(action, 5);
     }
 
     public String getRequestId() {

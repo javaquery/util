@@ -87,19 +87,31 @@ public class TestCollections {
   }
 
   @Test
-  public void test_nonNullNonEmpty() {
+  public void test_nonNullNotEmpty() {
     Assertions.assertTrue(Collections.nonNullNonEmpty(Collections.singletonList("A")));
     Assertions.assertFalse(Collections.nonNullNonEmpty(NULL_LIST));
     Assertions.assertFalse(Collections.nonNullNonEmpty(EMPTY_SET));
   }
 
   @Test
-  public void test_nonNullNonEmpty_ExecutableFunction(){
+  public void test_nonNullNotEmpty_ExecutableFunction(){
     Collections.nonNullNonEmpty(Collections.singletonList("A"), () -> Assertions.assertTrue(true));
   }
 
   @Test
-  public void test_nonNullNonEmptyMap() {
+  public void test_notEmptyStream(){
+    Collections.notEmpty(Collections.singletonList("A"))
+            .forEach(Assertions::assertNotNull);
+  }
+
+  @Test
+  public void test_notEmptyStream_emptyCollection(){
+    Stream<?> stream = Collections.notEmpty(EMPTY_LIST);
+    Assertions.assertEquals(0, stream.count());
+  }
+
+  @Test
+  public void test_nonNullNotEmptyMap() {
     Assertions.assertTrue(Collections.nonNullNonEmpty(Collections.singletonMap("A", "B")));
 
     Assertions.assertFalse(Collections.nonNullNonEmpty(NULL_MAP));
@@ -107,7 +119,7 @@ public class TestCollections {
   }
 
   @Test
-  public void test_nonNullNonEmptyMap_ExecutableFunction() {
+  public void test_nonNullNotEmptyMap_ExecutableFunction() {
     Collections.nonNullNonEmpty(Collections.singletonMap("A", "B"), () -> Assertions.assertTrue(true));
   }
 

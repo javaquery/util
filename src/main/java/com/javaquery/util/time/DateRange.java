@@ -1,5 +1,6 @@
 package com.javaquery.util.time;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
@@ -28,5 +29,9 @@ public final class DateRange {
 
   public Date getEndDate() {
     return endDate;
+  }
+
+  public long days(){
+    return ChronoUnit.DAYS.between(startDate.toInstant(), endDate.toInstant());
   }
 }

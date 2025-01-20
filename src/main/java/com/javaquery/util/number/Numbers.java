@@ -11,9 +11,9 @@ public class Numbers {
 
     /**
      * Round the decimal number.
-     * example: roundDecimal(10.123456789, 2) => 10.12
-     * example: roundDecimal(10.123456789, 4) => 10.1235
-     * example: roundDecimal(10.576, 2) => 10.58
+     * example: roundDecimal(10.123456789, 2) = 10.12
+     * example: roundDecimal(10.123456789, 4) = 10.1235
+     * example: roundDecimal(10.576, 2) = 10.58
      *
      * @param number number to round
      * @param decimalPlaces decimal places to round

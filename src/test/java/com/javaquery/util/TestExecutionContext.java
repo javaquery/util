@@ -45,6 +45,7 @@ public class TestExecutionContext {
         executionContext.setRequestId(UniqueIdGenerator.generate());
 
         UserContext userContext = (UserContext) executionContext.getUserContext();
+        assertNotNull(executionContext.getMeta());
         assertEquals(50L, userContext.getUserId());
         assertNotNull(executionContext.getCreatedAt());
         assertNotNull(executionContext.getRequestId());
@@ -102,6 +103,7 @@ public class TestExecutionContext {
         assertEquals(ExecutionContextAction.ONE, executionContext.getAction());
         assertNull(executionContext.getReferenceId());
         assertEquals("value", executionContext.getMeta("key", null));
+        assertEquals("not found", executionContext.optString("key2", "not found"));
         assertNotNull(executionContext.getCreatedAt());
 
         /* set meta */
@@ -141,5 +143,16 @@ public class TestExecutionContext {
         assertEquals(3, executionContext.getMaxRetries());
         assertNotNull(executionContext.getMeta());
         assertNotNull(executionContext.getCreatedAt());
+    }
+
+    @Test
+    public void metaDataTest(){
+        ExecutionContext<String, Void> executionContext = new ExecutionContext<>();
+        executionContext.addMeta("key", "value");
+        assertEquals("value", executionContext.getMeta("key", null));
+        assertEquals("value", executionContext.optString("key", null));
+        assertEquals("not found", executionContext.optString("key2", "not found"));
+        executionContext.addMeta("key", "value2");
+        assertEquals("value2", executionContext.getMeta("key", null));
     }
 }

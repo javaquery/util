@@ -48,6 +48,18 @@ public class Is {
     }
 
     /**
+     * Execute code if the provided reference is non-{@code null}.
+     *
+     * @param obj a reference to be checked against {@code null}
+     * @param executableFunction lambda function given executed if the provided reference is non-{@code null}.
+     */
+    public static void nonNull(Object obj, ExecutableFunction executableFunction){
+        if(nonNull(obj)){
+            executableFunction.execute();
+        }
+    }
+
+    /**
      * Returns {@code true} if the provided String is {@code null} or empty otherwise returns {@code
      * false}.
      *

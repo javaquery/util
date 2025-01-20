@@ -42,6 +42,7 @@ public class ExecutionContext<T, V> {
 
     public ExecutionContext() {
         this.createdAt = Dates.current();
+        this.meta = new HashMap<>();
     }
 
     public ExecutionContext(String requestId){
@@ -121,6 +122,10 @@ public class ExecutionContext<T, V> {
 
     public Object getMeta(String key, Object defaultValue){
         return meta.getOrDefault(key, defaultValue);
+    }
+
+    public String optString(String key, String defaultValue){
+        return String.valueOf(getMeta(key, defaultValue));
     }
 
     public void addMeta(String key, Object value){

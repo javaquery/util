@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * @since 1.0.7
  */
 public class ParameterAwareException extends AbstractRuntimeException {
-    static final long serialVersionUID = 4721842774212273469L;
+    private static final long serialVersionUID = 4721842774212273469L;
     private static final String PARAMETERS = "Parameters: ";
     private final Object[] parameters;
 
